@@ -1,4 +1,4 @@
-module github.com/MaitreDede/go-postfix
+module github.com/maitredede/go-postfix
 
 go 1.17
 
