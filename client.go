@@ -12,6 +12,8 @@ import (
 )
 
 type Client interface {
+	RemoteAddr() net.Addr
+	LocalAddr() net.Addr
 }
 
 type clientImpl struct {
@@ -133,4 +135,12 @@ func (c *clientImpl) sendString(str string) error {
 		return fmt.Errorf("write end failed: %w", err)
 	}
 	return nil
+}
+
+func (c *clientImpl) RemoteAddr() net.Addr {
+	return c.conn.RemoteAddr()
+}
+
+func (c *clientImpl) LocalAddr() net.Addr {
+	return c.conn.LocalAddr()
 }
