@@ -38,7 +38,7 @@ func (c *clientImpl) initBuffer() {
 
 // Handles incoming requests.
 func (c *clientImpl) handleClient() {
-	c.logger.Info("postfix client connected")
+	c.logger.Debug("postfix client connected")
 	defer c.conn.Close()
 
 	c.initBuffer()
@@ -50,7 +50,7 @@ func (c *clientImpl) handleClient() {
 		reqLen, err := c.conn.Read(buf)
 		if err != nil {
 			if err == io.EOF {
-				c.logger.Warn("postfix client disconnected")
+				c.logger.Debug("postfix client disconnected")
 				return
 			}
 			c.logger.Error("Error reading:", err.Error())
